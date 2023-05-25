@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ContinentsListQuery } from '../../generated/graphql';
 import { Outlet } from "react-router-dom";
-import './styles.css';
 import { Link } from 'react-router-dom';
+import { List } from 'antd';
 
 interface Props {
   data: ContinentsListQuery;
@@ -12,19 +12,19 @@ const className = 'LaunchList';
 
 const ContinentList: React.FC<Props> = ({ data }) => (
   <>
-  <div className={className}>
-    <h3>Launches</h3>
-    <ol className={`${className}__list`}>
+  <div>
+    <h1>Continents</h1>
+    <List split size='large'>
       {!!data.continents &&
         data.continents.map(
           (continent, i) =>
             !!continent && (
-              <li key={i} className={`${className}__item`}>
+              <li key={i}>
                 <Link to={`continent/${continent.code}`}>{continent.name} ({continent.code})</Link>
               </li>
             ),
         )}
-    </ol>
+    </List>
   </div>
   <Outlet />
   </>

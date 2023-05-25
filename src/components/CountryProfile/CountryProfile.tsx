@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { CountryProfileQuery } from '../../generated/graphql';
-import './styles.css';
-import { Link } from 'react-router-dom';
+import { Card, List } from 'antd';
 
 interface Props {
   data: CountryProfileQuery;
 }
-
-const className = 'LaunchProfile';
 
 const ContinentProfile: React.FC<Props> = ({ data }) => {
   if (!data.country) {
@@ -15,18 +12,26 @@ const ContinentProfile: React.FC<Props> = ({ data }) => {
   }
 
   return (
-    <div className={className}>
-      <h1 className={`${className}__title`}>
+    <Card>
+      <h1>
         {data.country.name} ({data.country.code})
       </h1>
-      {data.country.emoji}
-      {data.country.capital}
-      {data.country.currency}
+      <span style={{fontSize:"6rem"}}> {data.country.emoji} </span>
+      <br/>
+      
+      🏙️ {data.country.capital} <br/>
+      🪙 {data.country.currency}
+      
+      
+      <List>
+      👄
       {data.country.languages.map((lang) => 
-        lang.name
+        <li>{lang.name}</li>
       )}
+      </List>
 
-    </div>
+
+    </Card>
   );
 };
 
