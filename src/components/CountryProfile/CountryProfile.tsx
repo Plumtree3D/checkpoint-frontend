@@ -17,8 +17,15 @@ const ContinentProfile: React.FC<Props> = ({ data }) => {
   return (
     <div className={className}>
       <h1 className={`${className}__title`}>
-        {data.country.name} {data.country.code}
+        {data.country.name} ({data.country.code})
       </h1>
+      {data.country.emoji}
+      {data.country.capital}
+      {data.country.currency}
+      {data.country.languages.map((lang) => 
+        lang.name
+      )}
+
     </div>
   );
 };

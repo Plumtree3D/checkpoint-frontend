@@ -17,12 +17,12 @@ const ContinentProfile: React.FC<Props> = ({ data }) => {
   return (
     <div className={className}>
       <h1 className={`${className}__title`}>
-        {data.continent.name} {data.continent.code}
+        {data.continent.name}
       </h1>
         <ul>
           {data.continent.countries.map((country, i) =>
             country ? (
-                <li key={i}> <Link to={`/country/${country.code}`}> {country.name} </Link>  </li>
+                <li key={i}> <Link to={`/country/${country.code}`}> {country.emoji} {country.name} </Link>  </li>
             ) : null,
           )}
         </ul>

@@ -126,7 +126,7 @@ export type ContinentsProfileQueryVariables = Exact<{
 }>;
 
 
-export type ContinentsProfileQuery = { __typename?: 'Query', continent?: { __typename?: 'Continent', name: string, code: string, countries: Array<{ __typename?: 'Country', name: string, code: string }> } | null };
+export type ContinentsProfileQuery = { __typename?: 'Query', continent?: { __typename?: 'Continent', name: string, countries: Array<{ __typename?: 'Country', name: string, code: string, emoji: string }> } | null };
 
 export type ContinentsListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -138,7 +138,7 @@ export type CountryProfileQueryVariables = Exact<{
 }>;
 
 
-export type CountryProfileQuery = { __typename?: 'Query', country?: { __typename?: 'Country', name: string, code: string } | null };
+export type CountryProfileQuery = { __typename?: 'Query', country?: { __typename?: 'Country', code: string, name: string, emoji: string, capital?: string | null, currency?: string | null, native: string, languages: Array<{ __typename?: 'Language', name?: string | null }> } | null };
 
 
 export const ContinentsProfileDocument = gql`
@@ -147,9 +147,9 @@ export const ContinentsProfileDocument = gql`
     countries {
       name
       code
+      emoji
     }
     name
-    code
   }
 }
     `;
@@ -219,8 +219,15 @@ export type ContinentsListQueryResult = Apollo.QueryResult<ContinentsListQuery, 
 export const CountryProfileDocument = gql`
     query CountryProfile($code: ID!) {
   country(code: $code) {
-    name
     code
+    name
+    emoji
+    capital
+    currency
+    native
+    languages {
+      name
+    }
   }
 }
     `;

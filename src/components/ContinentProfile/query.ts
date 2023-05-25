@@ -5,10 +5,10 @@ export const QUERY_CONTINENT_PROFILE = gql`
     continent(code: $code) {
       countries {
         name,
-        code
+        code,
+        emoji
       }
-      name,
-      code
+      name
     }
   }
 `;
