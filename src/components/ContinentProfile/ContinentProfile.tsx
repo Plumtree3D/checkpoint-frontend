@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ContinentsProfileQuery } from '../../generated/graphql';
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 interface Props {
   data: ContinentsProfileQuery;
@@ -18,13 +19,13 @@ const ContinentProfile: React.FC<Props> = ({ data }) => {
       <h1 className={`${className}__title`}>
         {data.continent.name} {data.continent.code}
       </h1>
-        <div className={`${className}__image-list`}>
+        <ul>
           {data.continent.countries.map((country, i) =>
             country ? (
-                country.name
+                <li key={i}> <Link to={`/country/${country.code}`}> {country.name} </Link>  </li>
             ) : null,
           )}
-        </div>
+        </ul>
     </div>
   );
 };

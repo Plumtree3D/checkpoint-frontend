@@ -4,9 +4,9 @@ import ContinentProfile from './ContinentProfile';
 import { useParams } from 'react-router-dom';
 
 const ContinentProfileContainer = () => { 
-  const { data, error, loading } = useContinentsProfileQuery({ variables: { code: "EU" } });
-  let truc = useParams()
-  console.log(truc)
+  let code = useParams()
+  const { data, error, loading } = useContinentsProfileQuery({ variables: { code: code.continentID!} });
+  console.log(code.continentID)
 
   if (loading) {
     return <div>Loading...</div>;

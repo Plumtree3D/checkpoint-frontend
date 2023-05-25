@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ContinentsList from './components/ContinentsList';
 import ContinentProfile from './components/ContinentProfile';
+import CountryProfile from './components/CountryProfile';
+
 import ErrorPage from './errorPage'
 import {
   createBrowserRouter,
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/continent/:continentID",
     element: <ContinentProfile/>,
+  },
+  {
+    path: "/country/:countryID",
+    element: <CountryProfile/>,
   }
 ]);
 
