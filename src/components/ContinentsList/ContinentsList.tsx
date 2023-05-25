@@ -13,16 +13,16 @@ const className = 'LaunchList';
 const ContinentList: React.FC<Props> = ({ data }) => (
   <>
   <div>
-    <h1>Continents</h1>
-    <List split size='large'>
-      {!!data.continents &&
-        data.continents.map(
+    <List 
+    split 
+    size='large'
+    header={<h1>Continents</h1>}
+    >
+      {data.continents.map(
           (continent, i) =>
-            !!continent && (
-              <li key={i}>
+              <List.Item key={i}>
                 <Link to={`continent/${continent.code}`}>{continent.name} ({continent.code})</Link>
-              </li>
-            ),
+              </List.Item>
         )}
     </List>
   </div>

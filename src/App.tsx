@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ContinentsList from './components/ContinentsList';
-import ContinentProfile from './components/ContinentProfile';
-import CountryProfile from './components/CountryProfile';
+import ContinentProfile from './components/Continent';
+import CountryProfile from './components/Country';
 
 import ErrorPage from './errorPage'
 import {

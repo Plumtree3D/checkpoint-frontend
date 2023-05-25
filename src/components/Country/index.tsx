@@ -1,26 +1,24 @@
 import * as React from 'react';
 import { useCountryProfileQuery } from '../../generated/graphql';
-import CountryProfile from './CountryProfile';
+import CountryAttributes from './CountryAttributes';
 import { useParams } from 'react-router-dom';
+import ErrorPage from '../../errorPage';
+import { Spin } from 'antd';
 
 const CountryProfileContainer = () => { 
   let code = useParams()
   const { data, error, loading } = useCountryProfileQuery({ variables: { code: code.countryID!} });
-  console.log(code.countryID)
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spin/>;
   }
-
-  if (error) {
-    return <div>ERROR</div>;
+  if (error || !data) {
+    return <ErrorPage/>;
   }
-
-  if (!data) {
-    return <div>Select a flight from the panel</div>;
+  if (Object.keys(data).length === 0) {
+    return <span>🤷</span>
   }
-
-  return <CountryProfile data={data} />;
+  return <CountryAttributes data={data} />;
 };
 
 export default CountryProfileContainer;

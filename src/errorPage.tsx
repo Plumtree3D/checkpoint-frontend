@@ -7,6 +7,7 @@ export default function ErrorPage() {
   return (
     <div id="error-page">
       <p>C'est quoi ce bruit de con là?</p>
+      <img src="/adlaurent.png" alt="" />
     </div>
   );
 }
